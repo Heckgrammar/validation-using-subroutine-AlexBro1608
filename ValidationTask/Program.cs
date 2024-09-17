@@ -11,6 +11,11 @@
             // The username should only be output once
             Console.Write("Enter first name: ");
             firstName = Console.ReadLine();
+            while (Convert.ToBoolean(ValidName(firstName)) == false)
+            {
+                Console.Write("Enter first name: ");
+                firstName = Console.ReadLine();
+            }
             Console.Write("Enter last name: ");
             lastName = Console.ReadLine();
             Console.Write("Enter age: ");
