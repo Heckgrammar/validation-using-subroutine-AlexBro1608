@@ -35,7 +35,7 @@
         }
         static bool ValidName(string name)
         {
-            // name must be at least two characters and contain only letters
+            string Length = name.Length;
         }
 
         static bool validAge(int age)
