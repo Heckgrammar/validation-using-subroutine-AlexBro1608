@@ -15,13 +15,18 @@
             lastName = Console.ReadLine();
             while (Convert.ToBoolean(ValidName(firstName, lastName)) == false)
             {
-                Console.Write("Enter first name: ");
+                Console.WriteLine("Enter first name: ");
                 firstName = Console.ReadLine();
-                Console.Write("Enter last name: ");
+                Console.WriteLine("Enter last name: ");
                 lastName = Console.ReadLine();
             }
-            Console.Write("Enter age: ");
+            Console.WriteLine("Enter age: ");
             age = Convert.ToInt32(Console.ReadLine());
+            while (Convert.ToBoolean(ValidAge(age)) == false)
+            {
+                Console.WriteLine("Enter age: ");
+                age = Convert.ToInt32(Console.ReadLine());
+            }
             Console.Write("Enter Password: ");
             password = Console.ReadLine();
             Console.Write("Enter email address: ");
@@ -66,10 +71,13 @@
             return false;
         }
 
-        static bool validAge(int age)
+        static bool ValidAge(int age)
         {
-            //age must be between 11 and 18 inclusive
-
+            if (age >= 11 && age <= 18)
+            {
+                return true;
+            }
+            return false;
         }
 
 
