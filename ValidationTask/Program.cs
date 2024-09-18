@@ -9,15 +9,17 @@
 
             // get the user inputs until all are valid.
             // The username should only be output once
-            Console.Write("Enter first name: ");
+            Console.WriteLine("Enter first name: ");
             firstName = Console.ReadLine();
-            while (Convert.ToBoolean(ValidName(firstName)) == false)
+            Console.WriteLine("Enter last name: ");
+            lastName = Console.ReadLine();
+            while (Convert.ToBoolean(ValidName(firstName, lastName)) == false)
             {
                 Console.Write("Enter first name: ");
                 firstName = Console.ReadLine();
+                Console.Write("Enter last name: ");
+                lastName = Console.ReadLine();
             }
-            Console.Write("Enter last name: ");
-            lastName = Console.ReadLine();
             Console.Write("Enter age: ");
             age = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter Password: ");
@@ -33,16 +35,26 @@
             // Show your evidence in the Readme
 
         }
-        static bool ValidName(string name)
+        static bool ValidName(string firstName, string lastName)
         {
-            int Length = name.Length;
-            if (Length >= 2)
+            int firstLength = firstName.Length;
+            int lastLength = lastName.Length;
+            if (firstLength >= 2 && lastLength >= 2)
             {
-                for (int i = 0; i < Length; i++)
+                for (int i = 0; i < firstLength; i++)
                 {
-                    if (char.IsLetter(name[i]))
+                    if (char.IsLetter(firstName[i]))
                     {
-
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                for (int i = 0; i < lastLength; i++)
+                {
+                    if (char.IsLetter(lastName[i]))
+                    {
                     }
                     else
                     {
