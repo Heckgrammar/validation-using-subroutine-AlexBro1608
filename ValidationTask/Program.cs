@@ -120,10 +120,24 @@
                                         {
                                             if (char.IsSymbol(password[l]))
                                             {
-                                                for 
+                                                for (int m = 0; m < password.Length - 2; m++)
+                                                {
+                                                    if ( ((Convert.ToInt32(password[m]) + 2) == (Convert.ToInt32(password[m + 1])) + 1) )
+                                                    {
+                                                        if (((Convert.ToInt32(password[m]) + 2) == (Convert.ToInt32(password[m + 2]))))
+                                                        {
+                                                            if (((Convert.ToInt32(password[m]) - 2) == (Convert.ToInt32(password[m + 1])) - 1))
+                                                            {
+                                                                if (((Convert.ToInt32(password[m]) - 2) == (Convert.ToInt32(password[m + 2]))))
+                                                                {
+                                                                   return false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
-                                        return false;
                                     }
                                 }
                                 return false;
