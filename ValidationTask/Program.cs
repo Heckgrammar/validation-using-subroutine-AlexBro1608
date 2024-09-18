@@ -26,7 +26,7 @@
             emailAddress = Console.ReadLine();
 
 
-            username = createUserName(firstName,lastName,age);
+            username = createUserName(firstName, lastName, age);
             Console.WriteLine($"Username is {username}, you have successfully registered please remember your password");
 
             //  Test your program with a range of tests to show all validation works
@@ -35,7 +35,23 @@
         }
         static bool ValidName(string name)
         {
-            string Length = name.Length;
+            int Length = name.Length;
+            if (Length >= 2)
+            {
+                for (int i = 0; i < Length; i++)
+                {
+                    if (char.IsLetter(name[i]))
+                    {
+
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
         }
 
         static bool validAge(int age)
@@ -44,7 +60,7 @@
 
         }
 
-   
+
         static bool ValidPassword(string password)
         {
             // Check password is at least 8 characters in length
