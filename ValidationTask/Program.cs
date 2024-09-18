@@ -27,8 +27,13 @@
                 Console.WriteLine("Enter age: ");
                 age = Convert.ToInt32(Console.ReadLine());
             }
-            Console.Write("Enter Password: ");
+            Console.WriteLine("Enter Password: ");
             password = Console.ReadLine();
+            while(Convert.ToBoolean(ValidPassword(password)) == false)
+            {
+                Console.WriteLine("Enter Password: ");
+                password = Console.ReadLine();
+            }
             Console.Write("Enter email address: ");
             emailAddress = Console.ReadLine();
 
@@ -97,8 +102,39 @@
             // AAbbdd!2 = valid (only 2 consecutive letters A and B and only 2 repeating of each)
             // abC461*+ = not valid (abC are 3 consecutive letters)
             // 987poiq! = not valid (987 are consecutive)
-
-
+            if (password.Length >= 8)
+            {
+                for (int i = 0; i < password.Length; i++)
+                {
+                  if (char.IsLower(password[i]))
+                  {
+                        for (int j = 0; j < password.Length; j++)
+                        {
+                            if (char.IsDigit(password[j]))
+                            {
+                                for (int k = 0; k < password.Length; k++)
+                                {
+                                    if (char.IsUpper(password[k]))
+                                    {
+                                        for (int l = 0; l < password.Length; l++)
+                                        {
+                                            if (char.IsSymbol(password[l]))
+                                            {
+                                                for 
+                                            }
+                                        }
+                                        return false;
+                                    }
+                                }
+                                return false;
+                            }
+                        }
+                        return false;
+                  }
+                }
+                return false;
+            }
+            return false;
 
         }
         static bool validEmail(string email)
