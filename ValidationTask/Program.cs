@@ -38,8 +38,8 @@
             emailAddress = Console.ReadLine();
 
 
-            username = createUserName(firstName, lastName, age);
-            Console.WriteLine($"Username is {username}, you have successfully registered please remember your password");
+            //username = createUserName(firstName, lastName, age);
+            //Console.WriteLine($"Username is {username}, you have successfully registered please remember your password");
 
             //  Test your program with a range of tests to show all validation works
             // Show your evidence in the Readme
@@ -106,8 +106,8 @@
             {
                 for (int i = 0; i < password.Length; i++)
                 {
-                  if (char.IsLower(password[i]))
-                  {
+                    if (char.IsLower(password[i]))
+                    {
                         for (int j = 0; j < password.Length; j++)
                         {
                             if (char.IsDigit(password[j]))
@@ -122,56 +122,67 @@
                                             {
                                                 for (int m = 0; m < password.Length - 2; m++)
                                                 {
-                                                    if ( ((Convert.ToInt32(password[m]) + 2) == (Convert.ToInt32(password[m + 1])) + 1) )
+                                                    password = password.ToLower();
+                                                    if ( ((Convert.ToInt32((password[m])) + 2) == (Convert.ToInt32(password[m + 1])) + 1) )
                                                     {
                                                         if (((Convert.ToInt32(password[m]) + 2) == (Convert.ToInt32(password[m + 2]))))
                                                         {
-                                                            if (((Convert.ToInt32(password[m]) - 2) == (Convert.ToInt32(password[m + 1])) - 1))
-                                                            {
-                                                                if (((Convert.ToInt32(password[m]) - 2) == (Convert.ToInt32(password[m + 2]))))
-                                                                {
-                                                                   return false;
-                                                                }
-                                                            }
+                                                            return false;
+                                                        }
+                                                    }
+                                                    if ( (Convert.ToInt32(password[m]) - 2) == (Convert.ToInt32(password[m + 1]) - 1) )
+                                                    {
+                                                        if ( (Convert.ToInt32(password[m]) - 2) == Convert.ToInt32(password[m + 2]) )
+                                                        {
+                                                            return false;
+                                                        }
+                                                    }
+                                                    if ( Convert.ToInt32(password[m]) == Convert.ToInt32(password[m + 1]) )
+                                                    {
+                                                        if ( Convert.ToInt32(password[m])  == Convert.ToInt32(password[m + 2]) ) 
+                                                        {
+                                                            return false;
                                                         }
                                                     }
                                                 }
+                                                return true;
                                             }
                                         }
+                                        return false;
                                     }
                                 }
                                 return false;
                             }
                         }
                         return false;
-                  }
+                    }
                 }
                 return false;
             }
             return false;
 
         }
-        static bool validEmail(string email)
-        {
-            // a valid email address
-            // has at least 2 characters followed by an @ symbol
-            // has at least 2 characters followed by a .
-            // has at least 2 characters after the .
-            // contains only one @ and any number of .
-            // does not contain any other non letter or number characters
+        //static bool validEmail(string email)
+        //{
+        //    // a valid email address
+        //    // has at least 2 characters followed by an @ symbol
+        //    // has at least 2 characters followed by a .
+        //    // has at least 2 characters after the .
+        //    // contains only one @ and any number of .
+        //    // does not contain any other non letter or number characters
 
-        }
-        static string createUserName(string firstName, string lastName, int age)
-        {
-            // username is made up from:
-            // first two characters of first name
-            // last two characters of last name
-            // age
-            //e.g. Bob Smith aged 34 would have the username Both34
+        //}
+        //static string createUserName(string firstName, string lastName, int age)
+        //{
+        //    // username is made up from:
+        //    // first two characters of first name
+        //    // last two characters of last name
+        //    // age
+        //    //e.g. Bob Smith aged 34 would have the username Both34
 
 
 
-        }
+        //}
 
     }
 }
