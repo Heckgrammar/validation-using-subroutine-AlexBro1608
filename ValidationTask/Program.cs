@@ -34,18 +34,20 @@
                 Console.WriteLine("Enter Password: ");
                 password = Console.ReadLine();
             }
-            Console.Write("Enter email address: ");
+            Console.WriteLine("Enter email address: ");
             emailAddress = Console.ReadLine();
-
-
-            //username = createUserName(firstName, lastName, age);
-            //Console.WriteLine($"Username is {username}, you have successfully registered please remember your password");
+            while(Convert.ToBoolean(validEmail(emailAddress)) == false)
+            {
+                Console.WriteLine("Enter email address: ");
+                emailAddress = Console.ReadLine();
+            }
+            username = createUserName(firstName, lastName, age);
+            Console.WriteLine("Username is " + username + " , you have successfully registered please remember your password");
 
             //  Test your program with a range of tests to show all validation works
             // Show your evidence in the Readme
-
-        }
-        static bool ValidName(string firstName, string lastName)
+	}
+	static bool ValidName(string firstName, string lastName)
         {
             int firstLength = firstName.Length;
             int lastLength = lastName.Length;
@@ -118,7 +120,7 @@
                                     {
                                         for (int l = 0; l < password.Length; l++)
                                         {
-                                            if (char.IsSymbol(password[l]))
+                                            if (char.IsSymbol(password[l]) || password[l] == '!' || password[l] == '+')
                                             {
                                                 for (int m = 0; m < password.Length - 2; m++)
                                                 {
@@ -162,27 +164,43 @@
             return false;
 
         }
-        //static bool validEmail(string email)
-        //{
-        //    // a valid email address
-        //    // has at least 2 characters followed by an @ symbol
-        //    // has at least 2 characters followed by a .
-        //    // has at least 2 characters after the .
-        //    // contains only one @ and any number of .
-        //    // does not contain any other non letter or number characters
-
-        //}
-        //static string createUserName(string firstName, string lastName, int age)
-        //{
-        //    // username is made up from:
-        //    // first two characters of first name
-        //    // last two characters of last name
-        //    // age
-        //    //e.g. Bob Smith aged 34 would have the username Both34
-
-
-
-        //}
+        static bool validEmail(string email)
+        {
+            // a valid email address
+            // has at least 2 characters followed by an @ symbol
+            // has at least 2 characters followed by a .
+            // has at least 2 characters after the .
+            // contains only one @ and any number of .
+            if (email.IndexOf('@') >= 3)
+			{
+				if (email.IndexOf('.') >= email.IndexOf('@') + 3)
+				{
+					if (email.Length >= email.IndexOf('.') + 2)
+				    {
+                        return true;
+					}
+					return false;
+				}
+				return false;
+			}
+			return false;
+        }
+        static string createUserName(string firstName, string lastName, int age)
+        {
+            // username is made up from:
+            // first two characters of first name
+            // last two characters of last name
+            // age
+            //e.g. Bob Smith aged 34 would have the username Both34
+			Console.WriteLine("Enter your username: ");
+            string username = Console.ReadLine();
+            while (username != (firstName.Substring(0, 2) + lastName.Substring((lastName.Length) - 2, 2) + Convert.ToString(age)))
+			{
+			    Console.WriteLine("Enter your username: ");
+                username = Console.ReadLine();
+			}	
+            return username;
+        }
 
     }
 }
